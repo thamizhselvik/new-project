@@ -1,0 +1,46 @@
+<?php
+include 'econnect.php';
+
+$sql = "SELECT firstName, lastName FROM eusers";
+$result = $conn->query($sql);
+echo " <style>
+
+h1{
+    font-size: 40px;
+    padding: 25px;
+    
+}
+
+body{
+    background-color: antiquewhite;
+    color: #442c14;
+}
+
+table{
+    border-collapse: collapse;
+   width: 35%;
+  
+}
+
+td,tr,th{
+    padding: 10px;
+    font-size: 20px;
+}
+    </style> "
+if ($result->num_rows > 0) {
+
+    echo "<center>
+    echo "<h1>Employee User List</h1>";
+    echo "<table border='1'>";
+    echo "<tr><th>UserName</th></tr>";
+
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row["firstName"]." "   . $row["lastName"] . "</td></tr>";
+    }
+
+    echo "</table>";
+} else {
+    echo "No users found.";
+}</center> "
+$conn->close();
+?>
